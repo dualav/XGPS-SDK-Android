@@ -1,0 +1,49 @@
+<resources>
+    <!-- Status -->
+    <string name="app_name">XGPSSDKSample</string>
+    <string name="device">Device</string>
+    <string name="battery">Battery</string>
+    <string name="firmware">Firmware Version</string>
+    <string name="fix_state">Fix State</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="altitude">Altitude</string>
+    <string name="heading">Heading</string>
+    <string name="speed">Speed</string>
+    <string name="utc">UTC</string>
+
+    <string name="sv">Satellites in view</string>
+    <string name="glonass_sv">Glonass in view</string>
+
+    <string name="disconnected">Disconnected</string>
+    <string name="unkown">--</string>
+    <string name="waiting">waiting..</string>
+    <string name="no_fix">no fix</string>
+    <string name="two_d_fix">2D fix</string>
+    <string name="three_d_fix">3D fix</string>
+
+    <!-- Trips -->
+    <string name="saved">Saved</string>
+
+
+    <!-- Trip Detail -->
+    <string name="name">Name</string>
+    <string name="started">Started</string>
+    <string name="duration">Duration</string>
+    <string name="stopped">Stopped</string>
+    <string name="data_points">Data Points</string>
+    <string name="edit">Edit</string>
+
+    <string name="delete_from_skypro">Delete from SkyPro</string>
+    <string name="save_to_app">Save to App</string>
+    <string name="map">Map</string>
+    <string name="share">Share</string>
+    <string name="making_kml">making to kml file..</string>
+
+
+    <!-- common -->
+    <string name="cancel">Cancel</string>
+    <string name="OK">OK</string>
+    <string name="exit_message">Press back again to exit.</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving XGPS.</string>
+</resources>

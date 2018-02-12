@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/XGPS-SDK-Android.iml" filepath="$PROJECT_DIR$/XGPS-SDK-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xgpsManager/xgpsManager.iml" filepath="$PROJECT_DIR$/xgpsManager/xgpsManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xgpssdksample/xgpssdksample.iml" filepath="$PROJECT_DIR$/xgpssdksample/xgpssdksample.iml" />
+    </modules>
+  </component>
+</project>
