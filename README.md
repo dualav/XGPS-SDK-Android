@@ -14,6 +14,8 @@ This project provides the Android SDK and example source code that XGPS150/XGPS1
 * [Permissions](#permissions)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Product](#product)
+
 
 # Requirements
 
@@ -159,7 +161,15 @@ dependencies {
 |abstract void |	getLogDetailComplete(ArrayList<LogBulkData> logBulkList) | Called when get detail log download complete. |
 |abstract void |	throwException(Exception e) | Called when occur exception. |
     
-Please reference the xgpsSample project to see detail.
+    
+### Mock Location
+
+In order to replace internal GPS location to external XGPS device, you can use XGPSManager.setMockEnable method. 
+But in above Android 6.0, you should change the mock provider permissions in developer option.
+Please go to the developer option > Select mock location app > select your app as provider.
+
+
+* Please reference the xgpsSample project to see detail.
 
 ## Product
 ![](http://gps.dualav.com/wp-content/uploads/xgps150_HeaderImage.jpg) ![](http://gps.dualav.com/wp-content/uploads/xgps160_HeaderImage.jpg)
