@@ -1,1 +1,1 @@
-include ':xgpssdksample', ':xgpsManager'
+include ':xgpssdksample', ':xgpsmanager'
