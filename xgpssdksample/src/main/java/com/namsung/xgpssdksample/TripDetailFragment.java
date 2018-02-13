@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -305,7 +306,8 @@ public class TripDetailFragment extends BaseFragment implements View.OnClickList
 
             File fullNameFile = new File(szSendFilePath+"/" + filename + ".kml");
 
-            final Uri fileUri = Uri.fromFile(fullNameFile);
+//            final Uri fileUri = Uri.fromFile(fullNameFile);
+            Uri fileUri = FileProvider.getUriForFile(getContext(), "com.namsung.xgpssdksample.fileprovider", fullNameFile);
 
             // share
             Intent mail = new Intent(Intent.ACTION_SEND);

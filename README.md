@@ -45,7 +45,7 @@ This project provides the Android SDK and example source code that XGPS150/XGPS1
 * If you use MockLocation and Android OS is above 6.0, you should do check self permission.
 ```Java
 protected void onCreate(Bundle savedInstanceState) {
-	…
+    …
     // user accept the location permission request at runtime.
     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION);
@@ -84,7 +84,7 @@ for using the XGPS SDK in your Android Studio, follow the steps below. (you can 
 ```gradle
 repositories {
     flatDir {
-        dirs 'library/'		// aar file path
+        dirs 'library/'     // aar file path
     }
 }
 
@@ -142,9 +142,10 @@ dependencies {
 | getHDOP | int | | |
 | getVDOP | int | | |
 | getPDOP | int | | |
-| getSatellitesMap | HashMa | | GPS satellites information. see the SatellitesInfo class |
-| getGlonassSatellitesMap | HashMa | | GLONASS satellites information. see the SatellitesInfo class |
+| getSatellitesMap | HashMap | | GPS satellites information. see the SatellitesInfo class |
+| getGlonassSatellitesMap | HashMap | | GLONASS satellites information. see the SatellitesInfo class. / not supported XGPS150 |
 | getFixType | int | | return TYPE_NO_FIX, TYPE_2D_FIX, TYPE_3D_FIX |
+| getAvailableDevices | ArrayList |  | get bonded XGPS series bluetooth devices |
 | onDestroy | void | | | 
 
 
@@ -152,14 +153,15 @@ dependencies {
 
 |Public methods |     |     |
 | ------------- | --- | --- |
-|abstract void |	connected(boolean isConnect, int error) | Called when bluetooth connection changed. |
-|abstract void |	updateLocationInfo() | Called when get location information from device |
-|abstract void |	updateSatellitesInfo() | Called when get satellites information from device. |
-|abstract void |	updateSettings(boolean positionEnable, boolean overWrite) | Called when get settings changed. |
-|abstract void |	getLogListComplete(ArrayList<LogData> logList) | Called when get log list complete. |
-|abstract void |	getLogDetailProgress(int bulkCount) | Called when get detail log download progress |
-|abstract void |	getLogDetailComplete(ArrayList<LogBulkData> logBulkList) | Called when get detail log download complete. |
-|abstract void |	throwException(Exception e) | Called when occur exception. |
+|abstract void |    connecting(BluetoothDevice device) | Called when bluetooth try to connect. |
+|abstract void |    connected(boolean isConnect, int error) | Called when bluetooth connection changed. |
+|abstract void |    updateLocationInfo() | Called when get location information from device |
+|abstract void |    updateSatellitesInfo() | Called when get satellites information from device. |
+|abstract void |    updateSettings(boolean positionEnable, boolean overWrite) | Called when get settings changed. |
+|abstract void |    getLogListComplete(ArrayList<LogData> logList) | Called when get log list complete. / not supported XGPS150 |
+|abstract void |    getLogDetailProgress(int bulkCount) | Called when get detail log download progress. / not supported XGPS150 |
+|abstract void |    getLogDetailComplete(ArrayList<LogBulkData> logBulkList) | Called when get detail log download complete. / not supported XGPS150 |
+|abstract void |    throwException(Exception e) | Called when occur exception. |
     
     
 ### Mock Location

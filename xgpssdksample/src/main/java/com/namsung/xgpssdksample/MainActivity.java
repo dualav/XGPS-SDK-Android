@@ -2,6 +2,7 @@ package com.namsung.xgpssdksample;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Debug;
@@ -135,6 +136,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 }
                 break;
         }
+    }
+
+    @Override
+    public void connecting(final BluetoothDevice device) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, "try to connect " + device.getName(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     // start XGPSListner
