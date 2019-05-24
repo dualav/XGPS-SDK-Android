@@ -1,6 +1,9 @@
 package com.namsung.xgpssdksample;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -51,6 +54,31 @@ public class StatusFragment extends BaseFragment {
         utc = (TextView)view.findViewById(R.id.tv_utc);
         satellites = (TextView)view.findViewById(R.id.tv_sv_list);
         glonass = (TextView)view.findViewById(R.id.tv_glonass_list);
+
+        deviceName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (xgpsManager.getAvailableDevices().size() > 1) {
+                    CharSequence[] itemList = new CharSequence[xgpsManager.getAvailableDevices().size()];
+                    int i = 0;
+                    for (BluetoothDevice device : xgpsManager.getAvailableDevices()) {
+                        itemList[i++] = device.getName();
+                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setItems(itemList, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            xgpsManager.setDevice(xgpsManager.getAvailableDevices().get(which));
+                            dialog.dismiss();
+                        }
+
+                    });
+
+                    builder.show();
+                }
+            }
+        });
+
 
         CheckBox mockGpsCheckBox = view.findViewById(R.id.cb_mock_gps);
         mockGpsCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
