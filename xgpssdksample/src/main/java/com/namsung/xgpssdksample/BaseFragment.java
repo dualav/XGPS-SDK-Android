@@ -1,6 +1,7 @@
 package com.namsung.xgpssdksample;
 
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 import com.namsung.xgpsmanager.XGPSManager;
 import com.namsung.xgpsmanager.data.LogBulkData;
@@ -17,8 +18,9 @@ public class BaseFragment extends Fragment {
 
     public void onBackPressed() {}
 
+    public void updateGPSVoltage() {}
     public void connected(boolean isConnect, int error) {}
-    public void updatePositionInfo() {}
+    public void updateLocationInfo() {}
     public void updateSatellitesInfo() {}
     public void updateSettings(boolean positionEnable, boolean overWrite) {}
     public void getLogListComplete(ArrayList<LogData> logList) {}

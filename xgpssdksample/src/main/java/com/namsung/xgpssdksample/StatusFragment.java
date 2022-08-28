@@ -169,7 +169,7 @@ public class StatusFragment extends BaseFragment {
     }
 
     @Override
-    public void updatePositionInfo() {
+    public void updateLocationInfo() {
         if (firmwareVersion.getText().equals(Constants.UNKNOWNSTRING))
             firmwareVersion.setText(xgpsManager.getFirmwareVersion());
         if (xgpsManager.isCharging()) {

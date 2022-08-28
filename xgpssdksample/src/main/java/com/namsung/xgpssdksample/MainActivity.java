@@ -7,28 +7,30 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Debug;
 import android.os.Handler;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.namsung.xgpsmanager.XGPSListener;
-import com.namsung.xgpsmanager.XGPSManager;
-import com.namsung.xgpsmanager.data.LogBulkData;
-import com.namsung.xgpsmanager.data.LogData;
-import com.namsung.xgpsmanager.data.XGPSError;
-import com.namsung.xgpsmanager.utils.Constants;
 import com.namsung.xgpsmanager.utils.DLog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, XGPSListener {
+import com.namsung.xgpsmanager.XGPSListener;
+import com.namsung.xgpsmanager.XGPSManager;
+import com.namsung.xgpsmanager.data.LogBulkData;
+import com.namsung.xgpsmanager.data.LogData;
+import com.namsung.xgpsmanager.data.SettingInfo;
+import com.namsung.xgpsmanager.data.XGPSError;
+import com.namsung.xgpsmanager.utils.Constants;
+
+public class MainActivity extends AppCompatActivity implements XGPSListener, BottomNavigationView.OnNavigationItemSelectedListener {
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int REQUEST_PAIRING_BT = 2;
     public static final int REQUEST_CODE_PERMISSIONS_LOCATION = 3;
@@ -175,11 +177,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @Override
+    public void updateGPSVoltage() {
+
+    }
+
+    @Override
     public void updateLocationInfo() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mCurrentFragment.updatePositionInfo();
+                mCurrentFragment.updateLocationInfo();
             }
         });
     }
@@ -194,15 +201,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         });
     }
 
-    @Override
-    public void updateSettings(final boolean positionEnable, final boolean overWrite) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mCurrentFragment.updateSettings(positionEnable, overWrite);
-            }
-        });
-    }
+//    @Override
+//    public void updateSettings(final boolean positionEnable, final boolean overWrite) {
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                mCurrentFragment.updateSettings(positionEnable, overWrite);
+//            }
+//        });
+//    }
 
     @Override
     public void getLogListComplete(final ArrayList<LogData> logList) {
@@ -255,6 +262,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    public void updateFirmwareInfo() {}
+    @Override
+    public void updateConfidenceInfo() {}
+    @Override
+    public void updateSatellitesInfoADSB(){}
+    @Override
+    public void updateCalibrationInfo(){}
+    @Override
+    public void updateADSBStatus(boolean isSelected){}
+    @Override
+    public void updateTrafficInfo(){}
+    @Override
+    public void updateSettings(SettingInfo info){}
+    // for skypro gps
+    @Override
+    public void getSelectedMountPoint(String mountpoint){}
+
+    @Override
+    public void receiveNtripData(long length) {
+
     }
 
 }

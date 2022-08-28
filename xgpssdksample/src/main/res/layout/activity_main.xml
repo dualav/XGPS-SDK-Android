@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <android.support.design.widget.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/tab_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +48,6 @@
         android:background="@color/background_color"
         app:menu="@menu/menu" >
 
-    </android.support.design.widget.BottomNavigationView>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

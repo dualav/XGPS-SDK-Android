@@ -2,9 +2,6 @@ package com.namsung.xgpssdksample;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +11,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.namsung.xgpsmanager.XGPSListener;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.namsung.xgpsmanager.XGPSManager;
 import com.namsung.xgpsmanager.data.LogBulkData;
 import com.namsung.xgpsmanager.data.LogData;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 /**
  * Created by cnapman on 2018. 2. 5..
  */
-
 public class TripsFragment extends BaseFragment {
     private static TripsFragment tripsFragment = null;
     private ListView mListView;
