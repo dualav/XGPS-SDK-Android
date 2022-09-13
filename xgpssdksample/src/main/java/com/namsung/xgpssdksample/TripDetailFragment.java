@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by cnapman on 2017. 11. 24..
@@ -230,27 +231,19 @@ public class TripDetailFragment extends BaseFragment implements View.OnClickList
         String gxCordStr;
         String whenTag;
         String gxCoordTag;
-        float latFloat, altFloat = 0, longFloat;
         for (int i = 0; i < mLogBulkList.size(); i++) {
 
             LogBulkData bulkData = mLogBulkList.get(i);
 
-            // longitude
-            longFloat = bulkData.getLongitude();
-            if (longFloat < 0)
-                longFloat = (longFloat + 360)* -1;
-
-
-            // latitude
-            latFloat = bulkData.getLatitude();
-            if (latFloat < 0)
-                latFloat = (latFloat + 360)* -1;
-
-            if (altFloat < 101350)
-                altFloat = bulkData.getAltitude();
+            Float longFloat = bulkData.getLongitude();
+            Float latFloat = bulkData.getLatitude();
+            Float altFloat = bulkData.getAltitude();
+            if (altFloat >= 101350) {
+                altFloat = 0.0f;
+            }
 
             whenStr = bulkData.getDate().replace("/", "-") + "T" + bulkData.getTodString() + "Z";
-            gxCordStr = "<gx:coord>" + longFloat + " "+ latFloat + " " + String.format("%.1f", altFloat) + "</gx:coord>";
+            gxCordStr = "<gx:coord>" + String.format(Locale.US, "%.6f", longFloat) + " "+ String.format(Locale.US, "%.6f", latFloat) + " " + String.format(Locale.US, "%.2f", altFloat) + "</gx:coord>";
             whenTag = "\t\t\t\t<when>" + whenStr + "</when>";
             gxCoordTag = gxCordStr;
 
