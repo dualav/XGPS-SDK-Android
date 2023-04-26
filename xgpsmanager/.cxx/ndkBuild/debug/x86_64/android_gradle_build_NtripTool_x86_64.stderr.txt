@@ -1,0 +1,96 @@
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:570:134: warning: unused parameter 'mode' [-Wunused-parameter]
+int ntripTest(void (*callback)(int mode, char* buf, int bufLen), char *strHost, char *strPort, char *strUser, char *strPassword, int mode, char *strMountPoint) {    // here
+                                                                                                                                     ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:756:35: warning: implicit conversion from 'int' to 'char' changes value from 128 to -128 [-Wconstant-conversion]
+                    rtpbuf[0] = (2<<6);
+                              ~  ~^~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:1021:63: warning: implicit conversion from 'int' to 'char' changes value from 128 to -128 [-Wconstant-conversion]
+                                                rtpbuf[0] = (2<<6);
+                                                          ~  ~^~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:1055:47: warning: implicit conversion from 'int' to 'char' changes value from 128 to -128 [-Wconstant-conversion]
+                                rtpbuf[0] = (2<<6);
+                                          ~  ~^~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:1220:50: warning: implicit conversion from 'int' to 'char' changes value from 128 to -128 [-Wconstant-conversion]
+                                rtpbuffer[0] = (2<<6);
+                                             ~  ~^~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:134:40: warning: unused function 'sighandler_alarm' [-Wunused-function]
+static __attribute__ ((noreturn)) void sighandler_alarm(
+                                       ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:148:13: warning: unused function 'sighandler_int' [-Wunused-function]
+static void sighandler_int(int sig __attribute__((__unused__)))
+            ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.c:313:12: warning: unused function 'getargs' [-Wunused-function]
+static int getargs(int argc, char **argv, struct Args *args)
+           ^
+8 warnings generated.
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/serial.c:88:26: warning: unused function 'SerialGetParity' [-Wunused-function]
+static enum SerialParity SerialGetParity(const char *buf, int *ressize)
+                         ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/serial.c:110:28: warning: unused function 'SerialGetProtocol' [-Wunused-function]
+static enum SerialProtocol SerialGetProtocol(const char *buf, int *ressize)
+                           ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/serial.c:138:13: warning: unused function 'SerialFree' [-Wunused-function]
+static void SerialFree(struct serial *sn)
+            ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/serial.c:149:21: warning: unused function 'SerialInit' [-Wunused-function]
+static const char * SerialInit(struct serial *sn,
+                    ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/serial.c:179:12: warning: unused function 'SerialRead' [-Wunused-function]
+static int SerialRead(struct serial *sn, char *buffer, size_t size)
+           ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/serial.c:192:12: warning: unused function 'SerialWrite' [-Wunused-function]
+static int SerialWrite(struct serial *sn, const char *buffer, size_t size)
+           ^
+6 warnings generated.
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:20:55: warning: passing 'char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+    (*_env)->SetByteArrayRegion(_env, jb, 0, buffLen, buffer);
+                                                      ^~~~~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:44:25: warning: passing 'const char *' to parameter of type 'char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    ntripTest(callback, strHost, strPort, strUser, strPassword, mode, strMountPoint);
+                        ^~~~~~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.h:17:72: note: passing argument to parameter 'strHost' here
+int ntripTest(void (*callback)(int mode, char* buf, int bufLen), char *strHost, char *strPort, char *strUser, char *strPassword, int mode, char *strMountPoint);
+                                                                       ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:44:34: warning: passing 'const char *' to parameter of type 'char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    ntripTest(callback, strHost, strPort, strUser, strPassword, mode, strMountPoint);
+                                 ^~~~~~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.h:17:87: note: passing argument to parameter 'strPort' here
+int ntripTest(void (*callback)(int mode, char* buf, int bufLen), char *strHost, char *strPort, char *strUser, char *strPassword, int mode, char *strMountPoint);
+                                                                                      ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:44:43: warning: passing 'const char *' to parameter of type 'char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    ntripTest(callback, strHost, strPort, strUser, strPassword, mode, strMountPoint);
+                                          ^~~~~~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.h:17:102: note: passing argument to parameter 'strUser' here
+int ntripTest(void (*callback)(int mode, char* buf, int bufLen), char *strHost, char *strPort, char *strUser, char *strPassword, int mode, char *strMountPoint);
+                                                                                                     ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:44:52: warning: passing 'const char *' to parameter of type 'char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    ntripTest(callback, strHost, strPort, strUser, strPassword, mode, strMountPoint);
+                                                   ^~~~~~~~~~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.h:17:117: note: passing argument to parameter 'strPassword' here
+int ntripTest(void (*callback)(int mode, char* buf, int bufLen), char *strHost, char *strPort, char *strUser, char *strPassword, int mode, char *strMountPoint);
+                                                                                                                    ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:44:71: warning: passing 'const char *' to parameter of type 'char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+    ntripTest(callback, strHost, strPort, strUser, strPassword, mode, strMountPoint);
+                                                                      ^~~~~~~~~~~~~
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/ntripclient.h:17:146: note: passing argument to parameter 'strMountPoint' here
+int ntripTest(void (*callback)(int mode, char* buf, int bufLen), char *strHost, char *strPort, char *strUser, char *strPassword, int mode, char *strMountPoint);
+                                                                                                                                                 ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:27:10: warning: unused variable 'buf' [-Wunused-variable]
+    char buf[128];
+         ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:25:95: warning: unused parameter 'obj' [-Wunused-parameter]
+JNIEXPORT void JNICALL Java_com_namsung_xgpsmanager_NtripClient_onCreate(JNIEnv *env, jobject obj, jobject xgpsManagerObj,
+                                                                                              ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:53:83: warning: unused parameter 'env' [-Wunused-parameter]
+JNIEXPORT void JNICALL Java_com_namsung_xgpsmanager_NtripClient_onDestroy(JNIEnv *env, jobject obj) {
+                                                                                  ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:53:96: warning: unused parameter 'obj' [-Wunused-parameter]
+JNIEXPORT void JNICALL Java_com_namsung_xgpsmanager_NtripClient_onDestroy(JNIEnv *env, jobject obj) {
+                                                                                               ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:59:85: warning: unused parameter 'env' [-Wunused-parameter]
+JNIEXPORT jboolean JNICALL Java_com_namsung_xgpsmanager_NtripClient_isReady(JNIEnv *env, jobject obj) {
+                                                                                    ^
+/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/NtripTool.c:59:98: warning: unused parameter 'obj' [-Wunused-parameter]
+JNIEXPORT jboolean JNICALL Java_com_namsung_xgpsmanager_NtripClient_isReady(JNIEnv *env, jobject obj) {
+                                                                                                 ^
+12 warnings generated.

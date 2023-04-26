@@ -12,14 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.namsung.xgpsmanager.XGPSManager;
 import com.namsung.xgpsmanager.data.SatellitesInfo;
 import com.namsung.xgpsmanager.utils.Constants;
 
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by cnapman on 2018. 2. 5..
@@ -28,6 +29,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StatusFragment extends BaseFragment {
     private static StatusFragment statusFragment = null;
     private TextView deviceName, batteryInfo, firmwareVersion, fixType, latitude, longitude, altitude, heading, speed, utc, satellites, glonass;
+    private LinearLayout satellitesView;
+    private long lastPositionUpdatedTime = 0;
+    private long[] lastSatUpdatedTime = new long[6];
 
     public static StatusFragment newInstance(XGPSManager xgpsManager) {
         if (statusFragment == null) {
@@ -53,7 +57,8 @@ public class StatusFragment extends BaseFragment {
         speed = (TextView)view.findViewById(R.id.tv_speed);
         utc = (TextView)view.findViewById(R.id.tv_utc);
         satellites = (TextView)view.findViewById(R.id.tv_sv_list);
-        glonass = (TextView)view.findViewById(R.id.tv_glonass_list);
+//        glonass = (TextView)view.findViewById(R.id.tv_glonass_list);
+        satellitesView = (LinearLayout)view.findViewById(R.id.satellites_layout);
 
         deviceName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +126,7 @@ public class StatusFragment extends BaseFragment {
         speed.setText(R.string.unkown);
         utc.setText(R.string.unkown);
         satellites.setText(R.string.unkown);
-        glonass.setText(R.string.unkown);
+//        glonass.setText(R.string.unkown);
     }
 
     private void connectInitialState() {
@@ -133,7 +138,7 @@ public class StatusFragment extends BaseFragment {
         speed.setText(R.string.waiting);
         utc.setText(R.string.waiting);
         satellites.setText(R.string.waiting);
-        glonass.setText(R.string.waiting);
+//        glonass.setText(R.string.waiting);
     }
 
     @Override
@@ -170,33 +175,52 @@ public class StatusFragment extends BaseFragment {
 
     @Override
     public void updateLocationInfo() {
-        if (firmwareVersion.getText().equals(Constants.UNKNOWNSTRING))
-            firmwareVersion.setText(xgpsManager.getFirmwareVersion());
-        if (xgpsManager.isCharging()) {
-            batteryInfo.setText("charging");
+        long currentTime = System.currentTimeMillis();
+        // update every 1 seconds
+        if (currentTime - lastPositionUpdatedTime < 1000) {
+            return;
         }
-        else {
-            batteryInfo.setText(String.format("%d%%", (int)(xgpsManager.getBatteryLevel()*100)));
-        }
-        int type = xgpsManager.getFixType();
-        if (type == XGPSManager.TYPE_2D_FIX)
-            fixType.setText(R.string.two_d_fix);
-        else if (type == XGPSManager.TYPE_3D_FIX)
-            fixType.setText(R.string.three_d_fix);
-        else
-            fixType.setText(R.string.no_fix);
-        latitude.setText(xgpsManager.getLatitude(XGPSManager.MODE_POSITION_DEGREE));
-        longitude.setText(xgpsManager.getLongitude(XGPSManager.MODE_POSITION_DEGREE));
-        altitude.setText(xgpsManager.getAltitude(Constants.MODE_ALTITUDE_FEET));
-        heading.setText(xgpsManager.getHeadingString());
-        speed.setText(xgpsManager.getSpeed(Constants.MODE_SPEED_KPH));
-        utc.setText(xgpsManager.getUTC());
+        lastPositionUpdatedTime = currentTime;
+        StatusFragment.this.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (firmwareVersion.getText().equals(Constants.UNKNOWNSTRING))
+                    firmwareVersion.setText(xgpsManager.getFirmwareVersion());
+                if (xgpsManager.isCharging()) {
+                    batteryInfo.setText("charging");
+                }
+                else {
+                    batteryInfo.setText(String.format("%d%%", (int)(xgpsManager.getBatteryLevel()*100)));
+                }
+                int type = xgpsManager.getFixType();
+                if (type == XGPSManager.TYPE_2D_FIX)
+                    fixType.setText(R.string.two_d_fix);
+                else if (type == XGPSManager.TYPE_3D_FIX)
+                    fixType.setText(R.string.three_d_fix);
+                else
+                    fixType.setText(R.string.no_fix);
+                latitude.setText(xgpsManager.getLatitude(XGPSManager.MODE_POSITION_DEGREE));
+                longitude.setText(xgpsManager.getLongitude(XGPSManager.MODE_POSITION_DEGREE));
+                altitude.setText(xgpsManager.getAltitude(Constants.MODE_ALTITUDE_FEET));
+                heading.setText(xgpsManager.getHeadingString());
+                speed.setText(xgpsManager.getSpeed(Constants.MODE_SPEED_KPH));
+                utc.setText(xgpsManager.getUTC());
+            }
+        });
+
     }
 
     @Override
-    public void updateSatellitesInfo() {
+    public void updateSatellitesInfo(int systemId) {
+        if (systemId < 1 || systemId > 5) return;
+        long currentTime = System.currentTimeMillis();
+        // update every 1 seconds
+        if (currentTime - lastSatUpdatedTime[systemId-1] < 1000) {
+            return;
+        }
+        lastSatUpdatedTime[systemId-1] = currentTime;
         String numberOfSatellites = "";
-        ConcurrentHashMap<Integer, SatellitesInfo> satellitesMap = xgpsManager.getSatellitesMap();
+        HashMap<Integer, SatellitesInfo> satellitesMap = (HashMap<Integer, SatellitesInfo>) xgpsManager.getSatellitesInfoMap().getAll(systemId);
         Iterator<Integer> it = satellitesMap.keySet().iterator();
         while (it.hasNext()) {
             Integer key = it.next();
@@ -205,18 +229,43 @@ public class StatusFragment extends BaseFragment {
             }
             numberOfSatellites += key;
         }
-        satellites.setText(numberOfSatellites);
+        String avgSNR = String.valueOf(xgpsManager.getAverageSNRInUse());
+        String inUseList = String.join(", ", xgpsManager.getSatellitesInUse(systemId));
+        final String satList = numberOfSatellites;
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                satellites.setText(avgSNR);
 
-        ConcurrentHashMap<Integer, SatellitesInfo> glonassMap = xgpsManager.getGlonassSatellitesMap();
-        numberOfSatellites = "";
-        it = glonassMap.keySet().iterator();
-        while (it.hasNext()) {
-            Integer key = it.next();
-            if (numberOfSatellites.length() > 0) {
-                numberOfSatellites += ", ";
+                int i = 0;
+                for (; i < satellitesView.getChildCount(); i++) {
+                    SatellitesInfoLayout layout = (SatellitesInfoLayout) satellitesView.getChildAt(i);
+                    if (layout.getSystemId() == systemId) {
+                        layout.setInViewValue(satList);
+                        layout.setInUseValue(inUseList);
+                        break;
+                    }
+                }
+                if (i == satellitesView.getChildCount()) {
+                    SatellitesInfoLayout layout = new SatellitesInfoLayout(getContext());
+                    layout.setSystemId(systemId);
+                    layout.setInViewValue(satList);
+                    layout.setInUseValue(inUseList);
+                    satellitesView.addView(layout);
+                }
             }
-            numberOfSatellites += key;
-        }
-        glonass.setText(numberOfSatellites);
+        });
+
+//        HashMap<Integer, SatellitesInfo> glonassMap = xgpsManager.getGlonassSatellitesMap();
+//        numberOfSatellites = "";
+//        it = glonassMap.keySet().iterator();
+//        while (it.hasNext()) {
+//            Integer key = it.next();
+//            if (numberOfSatellites.length() > 0) {
+//                numberOfSatellites += ", ";
+//            }
+//            numberOfSatellites += key;
+//        }
+//        glonass.setText(numberOfSatellites);
     }
 }

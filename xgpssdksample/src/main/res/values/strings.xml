@@ -12,8 +12,12 @@
     <string name="speed">Speed</string>
     <string name="utc">UTC</string>
 
+    <string name="satellites">Satellites</string>
     <string name="sv">Satellites in view</string>
     <string name="glonass_sv">Glonass in view</string>
+    <string name="average_snr">Average SNR</string>
+    <string name="in_view"># In View </string>
+    <string name="in_use"># In Use </string>
 
     <string name="disconnected">Disconnected</string>
     <string name="unkown">--</string>
@@ -21,6 +25,8 @@
     <string name="no_fix">no fix</string>
     <string name="two_d_fix">2D fix</string>
     <string name="three_d_fix">3D fix</string>
+    <string name="no_bonded_device">No Bonded XGPS Devices. \nDo you want to move Bluetooth Settings?</string>
+    <string name="select_device">Select a device</string>
 
     <!-- Trips -->
     <string name="saved">Saved</string>

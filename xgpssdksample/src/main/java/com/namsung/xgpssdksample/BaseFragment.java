@@ -21,7 +21,7 @@ public class BaseFragment extends Fragment {
     public void updateGPSVoltage() {}
     public void connected(boolean isConnect, int error) {}
     public void updateLocationInfo() {}
-    public void updateSatellitesInfo() {}
+    public void updateSatellitesInfo(int systemId) {}
     public void updateSettings(boolean positionEnable, boolean overWrite) {}
     public void getLogListComplete(ArrayList<LogData> logList) {}
     public void getLogDetailProgress(int bulkCount) {}

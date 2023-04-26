@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements XGPSListener, Bot
     private BaseFragment mCurrentFragment;
     private boolean isShowingOtherIntent = false;
 
+    private Handler xgpsHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements XGPSListener, Bot
 
         // setting current fragment
         setFragment(R.id.menu_gps);
+
+        HandlerThread handlerThread = new HandlerThread("MyHandlerThread");
+        handlerThread.start();
+        xgpsHandler = new Handler(handlerThread.getLooper());
     }
 
     private void setFragment(int menuId) {
@@ -183,20 +192,21 @@ public class MainActivity extends AppCompatActivity implements XGPSListener, Bot
 
     @Override
     public void updateLocationInfo() {
-        runOnUiThread(new Runnable() {
-            @Override
+        xgpsHandler.post(new Runnable() {
             public void run() {
-                mCurrentFragment.updateLocationInfo();
+                if (mCurrentFragment != null)
+                    mCurrentFragment.updateLocationInfo();
             }
         });
     }
 
     @Override
-    public void updateSatellitesInfo() {
-        runOnUiThread(new Runnable() {
-            @Override
+    public void updateSatellitesInfo(final int systemId) {
+        if (xgpsHandler == null) return;
+        xgpsHandler.post(new Runnable() {
             public void run() {
-                mCurrentFragment.updateSatellitesInfo();
+                if (mCurrentFragment != null)
+                    mCurrentFragment.updateSatellitesInfo(systemId);
             }
         });
     }
@@ -278,6 +288,12 @@ public class MainActivity extends AppCompatActivity implements XGPSListener, Bot
     public void updateTrafficInfo(){}
     @Override
     public void updateSettings(SettingInfo info){}
+
+    @Override
+    public void updateDrivingMode(int mode) {
+
+    }
+
     // for skypro gps
     @Override
     public void getSelectedMountPoint(String mountpoint){}
@@ -286,5 +302,8 @@ public class MainActivity extends AppCompatActivity implements XGPSListener, Bot
     public void receiveNtripData(long length) {
 
     }
+
+    @Override
+    public void onNtripError(String error) {}
 
 }

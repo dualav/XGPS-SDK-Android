@@ -1,0 +1,4 @@
+[x86_64] Compile        : NtripTool <= ntripclient.c
+[x86_64] Compile        : NtripTool <= serial.c
+[x86_64] Compile        : NtripTool <= NtripTool.c
+[x86_64] SharedLibrary  : libNtripTool.so
