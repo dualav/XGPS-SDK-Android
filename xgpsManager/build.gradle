@@ -3,21 +3,22 @@ plugins {
     id 'maven-publish'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                groupId = 'com.github.dualav'
-                artifactId = 'XGPS-SDK-Android'
-                version = '2.0'
-                pom {
-                    description = 'The xgps library for android'
-                }
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.dualav'
+            artifactId = 'XGPS-SDK-Android'
+            version = '2.0'
+            pom {
+                description = 'The xgps library for android'
             }
         }
     }
+    repositories {
+        mavenLocal()
+    }
 }
+
 
 android {
     compileSdkVersion 33
