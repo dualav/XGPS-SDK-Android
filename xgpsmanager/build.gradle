@@ -4,8 +4,8 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.jitpack'
-version = '1.0'
+group = 'com.github.dualav'
+version = '2.0'
 
 android {
     compileSdkVersion 31
@@ -14,7 +14,10 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
-        versionName "1.0"
+        versionName "2.0"
+        buildConfigField "String", "VERSION_NAME", "\"" + versionName + "\""
+        buildConfigField "boolean", "isLogEnable", "true"
+        buildConfigField "boolean", "isReleaseLogEnable", "true"
     }
 
     buildTypes {
@@ -22,10 +25,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 
@@ -42,9 +41,9 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.jitpack'
-                artifactId = 'android-example'
-                version = '1.0'
+                groupId = 'com.github.dualav'
+                artifactId = 'XGPS-SDK-Android'
+                version = '2.0'
             }
         }
     }
