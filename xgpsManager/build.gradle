@@ -5,7 +5,7 @@ plugins {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        xgpsmanager(MavenPublication) {
             groupId = 'com.github.dualav'
             artifactId = 'XGPS-SDK-Android'
             version = '2.0'
