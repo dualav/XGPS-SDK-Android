@@ -1,38 +1,60 @@
 {
   "buildFiles": [
-    "/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Android.mk",
-    "/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Application.mk"
+    "/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Android.mk",
+    "/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Application.mk"
   ],
-  "cleanCommands": [
-    "/Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-18 NDK_OUT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/lib clean"
+  "cleanCommandsComponents": [
+    [
+      "/Users/hjlee/Library/Android/sdk/ndk/21.4.7075529/ndk-build",
+      "NDK_PROJECT_PATH\u003dnull",
+      "APP_BUILD_SCRIPT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Android.mk",
+      "NDK_APPLICATION_MK\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Application.mk",
+      "APP_ABI\u003darmeabi-v7a",
+      "NDK_ALL_ABIS\u003darmeabi-v7a",
+      "NDK_DEBUG\u003d0",
+      "APP_PLATFORM\u003dandroid-18",
+      "NDK_OUT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/obj",
+      "NDK_LIBS_OUT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/lib",
+      "clean"
+    ]
   ],
-  "buildTargetsCommand": "/Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-18 NDK_OUT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/lib {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommandComponents": [
+    "/Users/hjlee/Library/Android/sdk/ndk/21.4.7075529/ndk-build",
+    "NDK_PROJECT_PATH\u003dnull",
+    "APP_BUILD_SCRIPT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Android.mk",
+    "NDK_APPLICATION_MK\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Application.mk",
+    "APP_ABI\u003darmeabi-v7a",
+    "NDK_ALL_ABIS\u003darmeabi-v7a",
+    "NDK_DEBUG\u003d0",
+    "APP_PLATFORM\u003dandroid-18",
+    "NDK_OUT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/obj",
+    "NDK_LIBS_OUT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/lib",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
   "libraries": {
     "NtripTool-release-armeabi-v7a": {
-      "buildCommand": "/Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-18 NDK_OUT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/lib /Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libNtripTool.so",
+      "buildCommandComponents": [
+        "/Users/hjlee/Library/Android/sdk/ndk/21.4.7075529/ndk-build",
+        "NDK_PROJECT_PATH\u003dnull",
+        "APP_BUILD_SCRIPT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Android.mk",
+        "NDK_APPLICATION_MK\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/src/main/jni/Application.mk",
+        "APP_ABI\u003darmeabi-v7a",
+        "NDK_ALL_ABIS\u003darmeabi-v7a",
+        "NDK_DEBUG\u003d0",
+        "APP_PLATFORM\u003dandroid-18",
+        "NDK_OUT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/obj",
+        "NDK_LIBS_OUT\u003d/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/lib",
+        "/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libNtripTool.so"
+      ],
       "toolchain": "toolchain-armeabi-v7a",
       "abi": "armeabi-v7a",
       "artifactName": "NtripTool",
-      "files": [
-        {
-          "src": "/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/NtripTool.c",
-          "flags": "-target armv7-none-linux-androideabi18 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot /Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -D_FORTIFY_SOURCE\u003d2 -fpic -march\u003darmv7-a -mthumb -Oz -DNDEBUG -I/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni -DANDROID -Wall -W -O3 -nostdinc++ -Wformat -Werror\u003dformat-security"
-        },
-        {
-          "src": "/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/ntripclient.c",
-          "flags": "-target armv7-none-linux-androideabi18 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot /Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -D_FORTIFY_SOURCE\u003d2 -fpic -march\u003darmv7-a -mthumb -Oz -DNDEBUG -I/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni -DANDROID -Wall -W -O3 -nostdinc++ -Wformat -Werror\u003dformat-security"
-        },
-        {
-          "src": "/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni/serial.c",
-          "flags": "-target armv7-none-linux-androideabi18 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot /Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -D_FORTIFY_SOURCE\u003d2 -fpic -march\u003darmv7-a -mthumb -Oz -DNDEBUG -I/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/src/main/jni -DANDROID -Wall -W -O3 -nostdinc++ -Wformat -Werror\u003dformat-security"
-        }
-      ],
-      "output": "/Users/hjlee/Documents/Projects/Android/SkyProAndroid/xgpsmanager/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libNtripTool.so"
+      "output": "/Users/hjlee/Documents/Projects/Android/XGPS-SDK-Android/xgpsmanager/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libNtripTool.so"
     }
   },
   "toolchains": {
     "toolchain-armeabi-v7a": {
-      "cCompilerExecutable": "/Users/hjlee/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang"
+      "cCompilerExecutable": "/Users/hjlee/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang"
     }
   },
   "cFileExtensions": [

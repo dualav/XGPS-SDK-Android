@@ -3,27 +3,17 @@ plugins {
     id 'maven-publish'
 }
 
-publishing {
-    publications {
-        xgpsmanager(MavenPublication) {
-            groupId = 'com.github.dualav'
-            artifactId = 'XGPS-SDK-Android'
-            version = '2.0'
-        }
-    }
-    repositories {
-        mavenLocal()
-    }
-}
-
+group = 'com.github.dualav'
+version = '2.0'
 
 android {
     compileSdkVersion 33
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 33
+        versionCode 1
+        versionName "2.0"
         buildConfigField "String", "VERSION_NAME", "\"" + versionName + "\""
-        buildConfigField "int", "buildNumber", getSvnRevision()
         buildConfigField "boolean", "isLogEnable", "true"
         buildConfigField "boolean", "isReleaseLogEnable", "true"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -32,17 +22,11 @@ android {
         }
     }
 
-//    sourceSets.main {
-//        jniLibs.srcDir 'src/main/libs'
-//        jni.srcDirs = []
-//    }
-
     externalNativeBuild {
         ndkBuild {
             path 'src/main/jni/Android.mk'
         }
     }
-
 
     buildTypes {
         release {
@@ -53,29 +37,24 @@ android {
             minifyEnabled false
         }
     }
-    namespace 'com.namsung.xgpsmanager'
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.13.2'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
 }
 
-def getSvnRevision() {
-    def revision = '3'
-    new ByteArrayOutputStream().withStream { os ->
-        def result = exec {
-            executable 'git'
-            args 'rev-list', '--count', 'HEAD'
-            standardOutput = os
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.dualav'
+                artifactId = 'XGPS-SDK-Android'
+                version = '2.0'
+            }
         }
-        revision = os.toString().trim()
     }
-    return revision;
 }
-
-group="com.github.dualav"

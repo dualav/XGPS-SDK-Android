@@ -1,12 +1,13 @@
 plugins {
     id 'com.android.application'
 }
+
 android {
     compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.namsung.xgpssdksample"
-        minSdkVersion 18
+        minSdkVersion 22
         targetSdkVersion 33
         versionCode 3
         versionName "1.1"
@@ -21,7 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    namespace 'com.namsung.xgpssdksample'
     lint {
         abortOnError false
         checkReleaseBuilds false
@@ -37,5 +37,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.8.0'
     testImplementation 'junit:junit:4.13.2'
-    implementation project(':xgpsmanager')
+//    implementation project(':xgpsmanager')
+    implementation 'com.github.dualav:XGPS-SDK-Android:jitpackTest-SNAPSHOT'
+
 }

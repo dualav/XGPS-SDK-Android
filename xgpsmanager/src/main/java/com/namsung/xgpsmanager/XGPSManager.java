@@ -1040,7 +1040,7 @@ public class XGPSManager {
     }
 
     public String getSDKVersion() {
-        return BuildConfig.VERSION_NAME + " (" + BuildConfig.buildNumber + ")";
+        return BuildConfig.VERSION_NAME;
     }
 
     public int getStreamMode() {
