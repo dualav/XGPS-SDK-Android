@@ -1,4 +1,0 @@
-[armeabi-v7a] Compile thumb  : NtripTool <= ntripclient.c
-[armeabi-v7a] Compile thumb  : NtripTool <= serial.c
-[armeabi-v7a] Compile thumb  : NtripTool <= NtripTool.c
-[armeabi-v7a] SharedLibrary  : libNtripTool.so

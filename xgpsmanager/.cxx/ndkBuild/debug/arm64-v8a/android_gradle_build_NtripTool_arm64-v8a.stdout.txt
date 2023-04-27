@@ -1,4 +1,0 @@
-[arm64-v8a] Compile        : NtripTool <= ntripclient.c
-[arm64-v8a] Compile        : NtripTool <= serial.c
-[arm64-v8a] Compile        : NtripTool <= NtripTool.c
-[arm64-v8a] SharedLibrary  : libNtripTool.so
