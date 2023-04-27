@@ -9,9 +9,6 @@ publishing {
             groupId = 'com.github.dualav'
             artifactId = 'XGPS-SDK-Android'
             version = '2.0'
-            pom {
-                description = 'The xgps library for android'
-            }
         }
     }
     repositories {
