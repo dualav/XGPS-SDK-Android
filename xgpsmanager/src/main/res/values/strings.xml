@@ -1,7 +1,3 @@
 <resources>
-    <string name="app_name">XGPSManager</string>
-    <string name="ok">OK</string>
-    <string name="enable_developer_mode">Please enable Developer mode in settings</string>
-    <string name="connection_problem_notification_title">SkyPro: connection problem</string>
-    <string name="service_closed_because_connection_problem_notification_title">SkyPro stopped</string>
+    <string name="app_name">xgpsmanager</string>
 </resources>

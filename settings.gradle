@@ -3,7 +3,6 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        maven { url "https://jitpack.io" }
     }
 }
 dependencyResolutionManagement {
@@ -11,10 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "XGPS-SDK-Android"
-
-include ':xgpssdksample', ':xgpsmanager'
-
+rootProject.name = "xgps"
+include ':app'
+include ':xgpsmanager'
