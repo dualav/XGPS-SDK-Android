@@ -1,41 +1,55 @@
-# GalleryLoader
-* 갤러리 로더 입니다.
-* 아래와 같이 빌더패턴을 이용해 GalleryLoader의 객체를 생성합니다.
-```java
-GalleryLoader loader = new GalleryLoader.Builder(MainActivity.this)
-                        .setOnImageSelectedListener(onImageSelectedListener)
-                        .create();
+# android-example
+
+[![Release](https://jitpack.io/v/jitpack/android-example.svg)](https://jitpack.io/#jitpack/android-example)
+
+Example Android library project that works with jitpack.io.
+
+See this [Tutorial](https://medium.com/@ome450901/publish-an-android-library-by-jitpack-a0342684cbd0) on how to publish an Android Library with JitPack.
+
+For more details check out the [documentation](https://github.com/jitpack/jitpack.io/blob/master/ANDROID.md)
+
+https://jitpack.io/#jitpack/android-example
+
+Add it to your build.gradle with:
+```gradle
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
 ```
-* 갤러리 로더 실행
-``` java
-loader.show(getSupportFragmentManager());
+and:
+
+```gradle
+dependencies {
+    compile 'com.github.jitpack:android-example:{latest version}'
+}
 ```
 
-* 아래의 리스너를 통해 이미지의 URI가 콜백됩니다.
-```java
-private GalleryLoader.OnImageSelectedListener onImageSelectedListener = new GalleryLoader.OnImageSelectedListener() {
-        @Override
-        public void onImageSelected(Uri uri) {
-		...
-        }
-    };
+## Multiple build variants
+
+If your library uses multiple flavours then see this example:
+https://github.com/jitpack-io/android-jitpack-library-example
+
+## Adding the maven plugin
+
+To enable installing into local maven repository and JitPack you need to add the [android-maven](https://github.com/dcendents/android-maven-gradle-plugin) plugin:
+
+1. Add `classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'` to root build.gradle under `buildscript { dependencies {`
+2. Add `com.github.dcendents.android-maven` to the library/build.gradle
+
+After these changes you should be able to run:
+
+    ./gradlew install
+    
+from the root of your project. If install works and you have added a GitHub release it should work on jitpack.io
+
+## Adding a sample app 
+
+If you add a sample app to the same repo then your app needs to have a dependency on the library. To do this in your app/build.gradle add:
+
+```gradle
+    dependencies {
+        compile project(':library')
+    }
 ```
-# 필요 권한
-* Manifest.permission.WRITE_EXTERNAL_STORAGE
-
-
-# 라이센스
- ```code
-Copyright 2017 Karrel
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
