@@ -24,4 +24,8 @@ dependencies {
 }
 ```
 
+## Sample project 
+
+https://github.com/dualav/xgpsSample
+
 to be update
